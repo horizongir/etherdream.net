@@ -8,7 +8,7 @@ namespace EtherDream.Net
 {
     public class EtherDreamDevice : IDisposable
     {
-        const int DeviceNameMaxLength = 1024;
+        const int DeviceNameMaxLength = 256;
         int cardNumber;
 
         private EtherDreamDevice(int number)
@@ -22,7 +22,7 @@ namespace EtherDream.Net
             {
                 var buffer = new byte[DeviceNameMaxLength];
                 NativeMethods.EtherDreamGetDeviceName(ref cardNumber, buffer, DeviceNameMaxLength);
-                return string.Empty;
+                return Encoding.ASCII.GetString(buffer, 0, Array.IndexOf(buffer, 0));
             }
         }
 
