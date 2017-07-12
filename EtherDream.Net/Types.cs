@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace EtherDream.Net
 {
+    public enum EtherDreamStatus
+    {
+        Ready = 1,
+        Busy = 2
+    }
+
     [StructLayout(LayoutKind.Sequential)]
     public struct EtherDreamPoint
     {

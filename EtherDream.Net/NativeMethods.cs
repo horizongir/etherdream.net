@@ -24,7 +24,7 @@ namespace EtherDream.Net
         internal static extern bool EtherDreamWriteFrame(ref int CardNum, [In]EtherDreamPoint[] data, int Bytes, ushort PPS, ushort Reps);
 
         [DllImport(libName, CallingConvention = CallingConvention.StdCall)]
-        internal static extern int EtherDreamGetStatus(ref int CardNum);
+        internal static extern EtherDreamStatus EtherDreamGetStatus(ref int CardNum);
 
         [DllImport(libName, CallingConvention = CallingConvention.StdCall)]
         internal static extern bool EtherDreamStop(ref int CardNum);
