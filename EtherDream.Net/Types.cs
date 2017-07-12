@@ -19,15 +19,4 @@ namespace EtherDream.Net
         public short AL;
         public short AR;
     }
-
-    [StructLayout(LayoutKind.Sequential)]
-    public struct EasyLasePoint
-    {
-        public ushort X;
-        public ushort Y;
-        public byte R;
-        public byte G;
-        public byte B;
-        public byte I;
-    }
 }
