@@ -39,20 +39,18 @@ namespace EtherDream.Net
             }
         }
 
-        public void WriteFrame(EtherDreamPoint[] data, int pointsPerSecond, int repetitions)
+        public bool WriteFrame(EtherDreamPoint[] data, int pointsPerSecond, int repetitions)
         {
-            if (!NativeMethods.EtherDreamWriteFrame(ref cardNumber, data, data.Length, (ushort)pointsPerSecond, (ushort)repetitions))
-            {
-                throw new InvalidOperationException("Error writing data frame to EtherDream device.");
-            }
+            return NativeMethods.EtherDreamWriteFrame(
+                ref cardNumber,
+                data, data.Length * Marshal.SizeOf(typeof(EtherDreamPoint)),
+                (ushort)pointsPerSecond,
+                (ushort)repetitions);
         }
 
-        public void Stop()
+        public bool Stop()
         {
-            if (!NativeMethods.EtherDreamStop(ref cardNumber))
-            {
-                throw new InvalidOperationException("Error stopping EtherDream device.");
-            }
+            return NativeMethods.EtherDreamStop(ref cardNumber);
         }
 
         public void Close()
