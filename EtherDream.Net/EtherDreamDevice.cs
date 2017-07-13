@@ -34,7 +34,7 @@ namespace EtherDream.Net
             {
                 var buffer = new byte[DeviceNameMaxLength];
                 NativeMethods.EtherDreamGetDeviceName(ref cardNumber, buffer, DeviceNameMaxLength);
-                return Encoding.ASCII.GetString(buffer, 0, Array.IndexOf(buffer, 0));
+                return Encoding.ASCII.GetString(buffer, 0, Array.IndexOf<byte>(buffer, 0));
             }
         }
 
